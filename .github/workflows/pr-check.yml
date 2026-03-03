@@ -1,0 +1,16 @@
+name: PR Commit Check
+
+on:
+  pull_request:
+
+jobs:
+  commit-lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate Commit Message
+        run: |
+          echo "${{ github.event.pull_request.title }}" > commit.txt
+          python scripts/validate_commit.py commit.txt
