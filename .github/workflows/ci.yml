@@ -27,5 +27,7 @@ jobs:
       - name: Format Check
         run: black --check .
 
-      - name: Run Tests
-        run: pytest
+      - name: Run tests
+       run: |
+        export PYTHONPATH=$PYTHONPATH:.
+        pytest
